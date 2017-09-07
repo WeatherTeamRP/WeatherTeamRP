@@ -34,7 +34,7 @@
         lat: 29.423017,
         lon: -98.48527,
         units: "imperial",
-        cnt: 5
+        cnt: 3
     }).done(weatherLoader);
 
 
@@ -50,19 +50,26 @@
         var wind = data.list[0].wind.speed;
         var pressure = data.list[0].main.pressure;
 
+
         data.list.forEach(function (day) {
         var list = "<div class=\"box col-md-4\">";
             list += "<tr>";
-            list += "<td>" + day.main.temp_max + "/" + day.main.temp_min + "</td>";
-            list += "<td>" + clouds + ":" + cloudsDescription + "</td>";
-            list += "<td>" + humidity + "</td>";
+            list += "<p>" + day.main.temp_min + "/" + day.main.temp_max + "</p>";
+
+            list += "<p>" + "<img src='" + "http://openweathermap.org/img/w/" + day.weather[0].icon + ".png" +"'>" + "</p>";
+
+            list += "<p>" + day.weather[0].main + ":" + day.weather[0].description + "</p>";
+            list += "<p>" + "Humidity: " + day.main.humidity + "</p>";
+            list += "<p>" + "Wind: " + day.wind.speed + "</p>";
+            list += "<p>" + "Pressure: " + day.main.pressure + "</p>";
             list += "</tr>";
             list += "</div>";
 
             appendList(list);
         });
         //     console.log(request.done);
-
+        $("p").css("text-align", "center");
+        $(".box").css("height", "300px");
         // request.done(weatherLoader);
 
 
