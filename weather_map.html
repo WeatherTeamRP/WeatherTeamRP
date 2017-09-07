@@ -6,7 +6,8 @@
     <style>
         #map-canvas {
             height: 350px;
-            width: 910px;
+            width: 925px;
+
         }
     </style>
     <title>Weather Map</title>
@@ -15,25 +16,24 @@
 
 <h1>Weather Application</h1>
 <h2>San Antonio</h2>
+<hr>
 <div class="container-fluid">
 <div class="row">
 
 </div>
-</div>
 
 <div id="map-canvas"></div>
+</div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5Kh8eEhfm84gnt6eqbhn5PPrsOoENp6A">
     </script>
 <script type="text/javascript">
     (function() {
         "use strict";
-        // Set our map options
+
         var mapOptions = {
-            // Set the zoom level
             zoom: 3,
 
-            // This sets the center of the map at our location
             center: {
                 lat:  29.423017,
                 lng: -98.48527

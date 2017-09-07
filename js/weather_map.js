@@ -54,13 +54,13 @@
         data.list.forEach(function (day) {
         var list = "<div class=\"box col-md-4\">";
             list += "<tr>";
-            list += "<p>" + day.main.temp_min + "/" + day.main.temp_max + "</p>";
+            list += "<p>" + "<strong>"+ parseInt(day.main.temp_max) + "º" + "/ " + parseInt(day.main.temp_min) + "º" + "</strong>" + "</p>";
 
             list += "<p>" + "<img src='" + "http://openweathermap.org/img/w/" + day.weather[0].icon + ".png" +"'>" + "</p>";
 
-            list += "<p>" + day.weather[0].main + ":" + day.weather[0].description + "</p>";
+            list += "<p>" + day.weather[0].main + ": " + day.weather[0].description + "</p>";
             list += "<p>" + "Humidity: " + day.main.humidity + "</p>";
-            list += "<p>" + "Wind: " + day.wind.speed + "</p>";
+            list += "<p>" + "Wind: " + day.wind.speed + " mph" + "</p>";
             list += "<p>" + "Pressure: " + day.main.pressure + "</p>";
             list += "</tr>";
             list += "</div>";
@@ -69,8 +69,18 @@
         });
         //     console.log(request.done);
         $("p").css("text-align", "center");
+        $("p").css("font-size", "20px");
         $(".box").css("height", "300px");
-        $("body").css("background-color", "lightblue");
+        $("div").css("margin-left", "10px");
+        $(".container-fluid").css("margin-left", "80px");
+        $('hr').css("color", "white");
+        $('.box').hover(function(){
+            $(this).css("background-color", "lightblue");
+        },
+        function(){
+            $(this).css("background-color", "lightgrey");
+        });
+
         // request.done(weatherLoader);
 
 

@@ -8,9 +8,27 @@
     height: 300px;
     display: inline-block;
 
-    background-color: lightgray;
+
     border: solid black 1px;
+    border-radius: 10%;
+    font-family: Cambria;
 
 
 
+
+
+
+}
+body{
+    background-image: url("cloud.jpg");
+}
+
+h1{
+    font-family: Helvetica;
+    text-align: center;
+
+}
+
+h2{
+    text-align: center;
 }
