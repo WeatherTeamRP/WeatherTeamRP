@@ -1,4 +1,4 @@
-(function(){
+(function () {
     "use strict";
     // $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
     //     APPID: "52520910551c39dc8d3da4d4fcb54c22",
@@ -27,16 +27,22 @@
     //     dayOne();
     //
     // }
-    $.get("http://api.openweathermap.org/data/2.5/forecast", {
+
+
+    var request = $.get("http://api.openweathermap.org/data/2.5/forecast", {
         APPID: "52520910551c39dc8d3da4d4fcb54c22",
-            lat:    29.423017,
-            lon:    -98.48527,
-            units:  "imperial",
-            cnt: 3
-    }).done(function(data) {
+        lat: 29.423017,
+        lon: -98.48527,
+        units: "imperial",
+        cnt: 3
+    }).done(weatherLoader);
+
+
+    function weatherLoader(data) {
         console.log(data);
+        var list = "";
         var html = "<div class=\"box col-md-4\">";
-        var minTemp = data.list[0].main.temp_min + "/";
+        var minTemp = data.list[0].main.temp_min + " ";
         var maxTemp = data.list[0].main.temp_max;
         var clouds = data.list[0].weather[0].main;
         var cloudsDescription = data.list[0].weather[0].description;
@@ -44,12 +50,25 @@
         var wind = data.list[0].wind.speed;
         var pressure = data.list[0].main.pressure;
 
+        data.list.forEach(function (data) {
+            list += "<tr>";
+            list += "<td>" + maxTemp + "/" + minTemp + "</td>";
+            list += "<td>" + clouds + ":" + cloudsDescription + "</td>";
+            list += "<td>" + humidity + "</td>";
+            list += "</tr>";
+
+        });
+            appendList(list);
+        //     console.log(request.done);
+
+        // request.done(weatherLoader);
 
 
-        $(".col-md-4").append(total);
-    });
+    }
 
-
+    function appendList(data) {
+        $(".col-md-4").append(data);
+    }
 
 
 })();
