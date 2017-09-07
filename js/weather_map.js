@@ -70,6 +70,7 @@
         //     console.log(request.done);
         $("p").css("text-align", "center");
         $(".box").css("height", "300px");
+        $("body").css("background-color", "lightblue");
         // request.done(weatherLoader);
 
 
