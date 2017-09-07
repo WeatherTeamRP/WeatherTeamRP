@@ -34,14 +34,14 @@
         lat: 29.423017,
         lon: -98.48527,
         units: "imperial",
-        cnt: 3
+        cnt: 5
     }).done(weatherLoader);
 
 
     function weatherLoader(data) {
         console.log(data);
-        var list = "";
         var html = "<div class=\"box col-md-4\">";
+        html += "<p>" + data.list[0].main.temp_min + "</p>";
         var minTemp = data.list[0].main.temp_min + " ";
         var maxTemp = data.list[0].main.temp_max;
         var clouds = data.list[0].weather[0].main;
@@ -50,15 +50,17 @@
         var wind = data.list[0].wind.speed;
         var pressure = data.list[0].main.pressure;
 
-        data.list.forEach(function (data) {
+        data.list.forEach(function (day) {
+        var list = "<div class=\"box col-md-4\">";
             list += "<tr>";
-            list += "<td>" + maxTemp + "/" + minTemp + "</td>";
+            list += "<td>" + day.main.temp_max + "/" + day.main.temp_min + "</td>";
             list += "<td>" + clouds + ":" + cloudsDescription + "</td>";
             list += "<td>" + humidity + "</td>";
             list += "</tr>";
+            list += "</div>";
 
-        });
             appendList(list);
+        });
         //     console.log(request.done);
 
         // request.done(weatherLoader);
@@ -67,7 +69,7 @@
     }
 
     function appendList(data) {
-        $(".col-md-4").append(data);
+        $(".row").append(data);
     }
 
 
