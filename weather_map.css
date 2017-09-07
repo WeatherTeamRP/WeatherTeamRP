@@ -1,0 +1,16 @@
+.row{
+
+
+}
+
+.box{
+    width: 300px;
+    height: 200px;
+    display: inline-block;
+
+    background-color: lightgray;
+    border: solid black 1px;
+
+
+
+}
